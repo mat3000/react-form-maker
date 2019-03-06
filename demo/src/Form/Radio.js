@@ -8,15 +8,32 @@ class Radio extends Component {
 
   render() {
     // const { validator, name, onChange, defaultValue, ...etc } = this.context;
-    const { validator, name, onChange, defaultValue, ...etc } = this.context;
-    const { state, api, children, propsValue, checked } = this.props;
+    const {
+      // validator,
+      name,
+      onChange,
+      defaultValue,
+      // defaultChecked,
+    } = this.context;
+    const {
+      state,
+      api,
+      children,
+      propsValue,
+      checked,
+      name: propsName,
+      ...etc
+    } = this.props;
     const { setValue, setTouched, setError } = api;
-    const { value } = state;
+    const { value, error } = state;
     const uniqid = `label-${Math.round(Math.random() * 100000)}`;
 
-    etc.defaultChecked = checked || defaultValue === value;
+    console.log(etc);
+    console.log(name);
 
-    console.log('---->', etc.defaultChecked, value, defaultValue);
+    // defaultChecked = checked || defaultValue === value;
+
+    // console.log('---->', etc.defaultChecked, value, defaultValue);
 
     // if (etc.defaultChecked && value !== valueState) {
     // console.log(value);
@@ -38,12 +55,13 @@ class Radio extends Component {
           id={uniqid}
           onChange={e => {
             // console.log(value, name);
-            setValue(e.target.value, name);
+            // setValue(e.target.value, name);
             // setValue(value, 'name');
             // setTouched(name);
             // setError(validator(e.target.value), name);
-            // if (onChange) onChange(e.target.value);
+            if (onChange) onChange(e.target.value);
           }}
+          defaultChecked={checked || defaultValue === value}
           {...etc}
         />
         {children || value}
