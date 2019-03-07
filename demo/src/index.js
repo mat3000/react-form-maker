@@ -17,7 +17,8 @@ const Demo = () => {
     <div>
       <h1>react-form-maker Demo</h1>
       <Form onSubmit={form => setRes(JSON.stringify(form))}>
-         {/*  <Input
+        {/* <Input name="input" value="coucou" /> */}
+        {/*  <Input
           name="input"
           value="coucou"
           validator={e => (!e ? 'error' : '')}
@@ -33,17 +34,15 @@ const Demo = () => {
           <Option value="option_3">option 3</Option>
         </Select> */}
 
-        <RadioGroup name="radio_A" defaultValue="radio_2">
+        {/* <RadioGroup name="radio_A">
+          <Radio value="radio_1">radio 1</Radio>
+          <Radio value="radio_2">radio 2</Radio>
+        </RadioGroup> */}
+
+        <RadioGroup name="radio_B" checkedValue="radio_2">
           <Radio value="radio_1">radio 1</Radio>
           <Radio value="radio_2">radio 2</Radio>
         </RadioGroup>
-
-        {/* <RadioGroup name="radio_B">
-          <Radio value="radio_1" checked>
-            radio 1
-          </Radio>
-          <Radio value="radio_2">radio 2</Radio>
-        </RadioGroup> */}
 
         <Submit>Valider</Submit>
       </Form>

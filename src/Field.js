@@ -7,14 +7,15 @@ class Field extends Component {
 
   componentDidMount() {
     const { fields, setValue, setValidator } = this.context;
-    const { name, validator, value: defaultValue } = this.props;
+    const { name, validator, value: defaultValue, checkedValue } = this.props;
     const { value } = fields[name] || {};
 
     if (name && validator) {
       setValidator(validator, name);
     }
+    // console.log('name ----->', name, value, defaultValue, checkedValue);
     if (name) {
-      setValue(value || defaultValue || '', name);
+      setValue(value || defaultValue || checkedValue || '', name);
     }
   }
 
@@ -26,8 +27,10 @@ class Field extends Component {
       validator,
       disabled,
       value: defaultValue,
+      checkedValue,
       ...etc
     } = this.props;
+
     const {
       setValue,
       setDisabled,
@@ -36,6 +39,7 @@ class Field extends Component {
       fields,
       onSubmit,
     } = this.context;
+
     const { value, error, touched } = fields[name] || {};
 
     // console.log(defaultValue);
@@ -50,13 +54,15 @@ class Field extends Component {
         onSubmit,
       },
       state: {
-        value: value || (defaultValue && !touched ? defaultValue : ''),
+        // value: value || (defaultValue && !touched ? defaultValue : ''),
+        value,
         error,
         fields,
       },
       name,
       disabled,
-      value: defaultValue,
+      // checkedValue,
+      // value: defaultValue,
       ...etc,
     };
 
@@ -79,6 +85,7 @@ Field.propTypes = {
   name: PropTypes.string,
   validator: PropTypes.func,
   value: PropTypes.string,
+  checkedValue: PropTypes.string,
   disabled: PropTypes.bool,
   component: PropTypes.func,
   children: PropTypes.node,
@@ -87,6 +94,7 @@ Field.propTypes = {
 Field.defaultProps = {
   name: '',
   value: '',
+  checkedValue: '',
   disabled: false,
   children: null,
   component: null,

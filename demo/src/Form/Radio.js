@@ -12,8 +12,8 @@ class Radio extends Component {
       // validator,
       name,
       onChange,
-      defaultValue,
-      // defaultChecked,
+      // defaultValue,
+      checkedValue,
     } = this.context;
     const {
       state,
@@ -26,42 +26,26 @@ class Radio extends Component {
     } = this.props;
     const { setValue, setTouched, setError } = api;
     const { value, error } = state;
-    const uniqid = `label-${Math.round(Math.random() * 100000)}`;
+    const uniqid = `radio-${Math.round(Math.random() * 100000)}`;
 
-    console.log(etc);
-    console.log(name);
+    console.log('-->', checkedValue, value, propsValue);
 
-    // defaultChecked = checked || defaultValue === value;
-
-    // console.log('---->', etc.defaultChecked, value, defaultValue);
-
-    // if (etc.defaultChecked && value !== valueState) {
-    // console.log(value);
-    // setValue(value, name);
-    // }
-    // if (etc.defaultChecked && value === defaultValue) {
-    // console.log(value);
-    // setTimeout(() => {
-    //   setValue(value, name);
-    // }, 5000);
-    // }
-    //
     return (
       <label htmlFor={uniqid}>
         <input
           type="radio"
           name={name}
-          value={value}
+          value={propsValue}
           id={uniqid}
           onChange={e => {
-            // console.log(value, name);
-            // setValue(e.target.value, name);
+            // console.log('onChange() ->', name, e.target.value);
+            setValue(e.target.value, name);
             // setValue(value, 'name');
             // setTouched(name);
             // setError(validator(e.target.value), name);
             if (onChange) onChange(e.target.value);
           }}
-          defaultChecked={checked || defaultValue === value}
+          // defaultChecked={checkedValue === value}
           {...etc}
         />
         {children || value}
