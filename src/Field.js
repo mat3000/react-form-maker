@@ -13,7 +13,7 @@ class Field extends Component {
     if (name && validator) {
       setValidator(validator, name);
     }
-    // console.log('name ----->', name, value, defaultValue, checkedValue);
+
     if (name) {
       setValue(value || propsValue || defaultValue || '', name);
     }
@@ -27,7 +27,7 @@ class Field extends Component {
       validator,
       disabled,
       defaultValue,
-      value: propsValue,
+      value: initialValue,
       ...etc
     } = this.props;
 
@@ -40,7 +40,7 @@ class Field extends Component {
       onSubmit,
     } = this.context;
 
-    const { value, error, touched } = fields[name] || {};
+    const { value, error } = fields[name] || {};
 
     const props = {
       api: {
@@ -48,21 +48,17 @@ class Field extends Component {
         setDisabled: (val, n = name) => setDisabled(val, n),
         setTouched: (n = name) => setTouched(true, n),
         setError: (val, n = name) => setError(val, n),
-        // getFieldByName: (n = name) => fields[n] || {},
         validator: val => (validator ? validator(val) : ''),
         onSubmit,
       },
       state: {
-        // value: value || (defaultValue && !touched ? defaultValue : ''),
-        value: value || propsValue || defaultValue,
-        // value,
+        value: value || initialValue || defaultValue,
         error,
         fields,
       },
       name,
       disabled,
-      // checkedValue,
-      value: propsValue || defaultValue,
+      initialvalue: initialValue,
       ...etc,
     };
 

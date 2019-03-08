@@ -20,11 +20,7 @@ const Demo = () => {
         <Input name="input_0" />
         <Input name="input_1" value="coucou" />
         <Input name="input_2" defaultValue="caca" />
-        {/*  <Input
-          name="input"
-          value="coucou"
-          validator={e => (!e ? 'error' : '')}
-        />
+        <Input name="input_3" validator={e => (!e ? 'error' : '')} />
 
         <Textarea name="textarea" />
 
@@ -34,9 +30,9 @@ const Demo = () => {
           <Option value="option_1">option 1</Option>
           <Option value="option_2">option 2</Option>
           <Option value="option_3">option 3</Option>
-        </Select> */}
+        </Select>
 
-        <RadioGroup name="radio_A">
+        <RadioGroup name="radio_A" validator={e => (!e ? 'error' : '')}>
           <Radio value="radio_1">radio 1</Radio>
           <Radio value="radio_2">radio 2</Radio>
         </RadioGroup>
