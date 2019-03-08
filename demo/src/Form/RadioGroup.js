@@ -4,13 +4,12 @@ import { asField } from '../../../src';
 
 const RadioContext = React.createContext();
 
-const RadioGroup = props => {
-  const { api, state, ...thisProps } = props;
-  const { children, name, disabled, ...etc } = thisProps;
+const RadioGroup = ({ api, state, ...props }) => {
+  const { children, name, disabled, ...etc } = props;
   const { error } = state;
 
   return (
-    <RadioContext.Provider value={{ ...props }}>
+    <RadioContext.Provider value={{ api, state, ...props }}>
       <p {...etc}>
         {children}
         {!disabled && error ? (
@@ -24,6 +23,14 @@ const RadioGroup = props => {
 RadioGroup.propTypes = {
   state: PropTypes.shape({}).isRequired,
   api: PropTypes.shape({}).isRequired,
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+RadioGroup.defaultProps = {
+  name: 'PropTypes.string',
+  disabled: false,
 };
 
 export default asField(RadioGroup);

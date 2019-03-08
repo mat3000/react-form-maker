@@ -11,10 +11,7 @@ class Radio extends Component {
     const { setValue, setTouched, setError, validator } = api;
     const { name, onChange } = props;
     const { children, value: initialValue } = this.props;
-    // const { setValue, setTouched, setError } = api;
-    const uniqid = `radio-${Math.round(Math.random() * 100000)}`;
-
-    console.log('-->', value, initialValue);
+    const uniqid = `radio-${Math.round(Math.random() * 10000000)}`;
 
     return (
       <label htmlFor={uniqid}>
@@ -30,7 +27,6 @@ class Radio extends Component {
             if (onChange) onChange(e.target.value);
           }}
           defaultChecked={initialValue === value}
-          // {...etc}
         />
         {children || value}
       </label>

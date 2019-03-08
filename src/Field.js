@@ -6,8 +6,14 @@ class Field extends Component {
   static contextType = FormContext;
 
   componentDidMount() {
-    const { fields, setValue, setValidator } = this.context;
-    const { name, validator, value: propsValue, defaultValue } = this.props;
+    const { fields, setValue, setValidator, setDisabled } = this.context;
+    const {
+      name,
+      validator,
+      disabled,
+      value: propsValue,
+      defaultValue,
+    } = this.props;
     const { value } = fields[name] || {};
 
     if (name && validator) {
@@ -15,6 +21,7 @@ class Field extends Component {
     }
 
     if (name) {
+      setDisabled(!!disabled, name);
       setValue(value || propsValue || defaultValue || '', name);
     }
   }
@@ -52,7 +59,7 @@ class Field extends Component {
         onSubmit,
       },
       state: {
-        value: value || initialValue || defaultValue,
+        value: value === undefined ? initialValue || defaultValue : value,
         error,
         fields,
       },
@@ -61,8 +68,6 @@ class Field extends Component {
       initialvalue: initialValue,
       ...etc,
     };
-
-    setDisabled(!!disabled, name);
 
     if (component) {
       return React.createElement(component, props, children);

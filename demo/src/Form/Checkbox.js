@@ -6,14 +6,15 @@ const Checkbox = ({ state, api, ...props }) => {
   const { setValue, setTouched, setError, validator } = api;
   const { value, error } = state;
   const { name, disabled, ...etc } = props;
+  const uniqid = `checkbox-${Math.round(Math.random() * 10000000)}`;
 
   return (
     <p>
-      <label htmlFor={`label-${name}`}>
+      <label htmlFor={uniqid}>
         <input
           type="checkbox"
           value={disabled ? '' : value}
-          id={`label-${name}`}
+          id={uniqid}
           onChange={e => {
             setValue(e.target.checked);
             setTouched();
@@ -29,6 +30,19 @@ const Checkbox = ({ state, api, ...props }) => {
       ) : null}
     </p>
   );
+};
+
+Checkbox.propTypes = {
+  state: PropTypes.shape({}).isRequired,
+  api: PropTypes.shape({}).isRequired,
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+Checkbox.defaultProps = {
+  name: 'PropTypes.string',
+  disabled: false,
 };
 
 export default asField(Checkbox);

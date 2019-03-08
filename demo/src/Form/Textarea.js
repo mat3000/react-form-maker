@@ -32,4 +32,16 @@ const Textarea = ({ state, api, ...props }) => {
   );
 };
 
+Textarea.propTypes = {
+  state: PropTypes.shape({}).isRequired,
+  api: PropTypes.shape({}).isRequired,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+Textarea.defaultProps = {
+  name: 'PropTypes.string',
+  disabled: false,
+};
+
 export default asField(Textarea);
