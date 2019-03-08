@@ -7,13 +7,13 @@ const RadioContext = React.createContext();
 
 const RadioGroup = ({ state, api, ...props }) => {
   const { validator } = api;
-  const { error } = state;
-  const { children, name, disabled, checkedValue, ...etc } = props;
+  const { value, error } = state;
+  const { children, name, disabled, ...etc } = props;
 
-  console.log('==>', checkedValue);
+  // console.log('==>', name);
 
   return (
-    <RadioContext.Provider value={{ name, validator, checkedValue, disabled }}>
+    <RadioContext.Provider value={{ name, validator, value, disabled }}>
       <p {...etc}>
         {children}
         {!disabled && error ? (

@@ -8,27 +8,24 @@ class Radio extends Component {
 
   render() {
     // const { validator, name, onChange, defaultValue, ...etc } = this.context;
-    const {
-      // validator,
-      name,
-      onChange,
-      // defaultValue,
-      checkedValue,
-    } = this.context;
+
+    const { validator, name, value, onChange } = this.context;
+
     const {
       state,
       api,
       children,
-      propsValue,
-      checked,
+      value: propsValue,
       name: propsName,
       ...etc
     } = this.props;
     const { setValue, setTouched, setError } = api;
-    const { value, error } = state;
     const uniqid = `radio-${Math.round(Math.random() * 100000)}`;
 
-    console.log('-->', checkedValue, value, propsValue);
+    // const stateValue = getFieldByName(name).value;
+
+    console.log('-->', value, propsValue);
+    // console.log('==>', value, getFieldByName(name).value);
 
     return (
       <label htmlFor={uniqid}>
@@ -45,7 +42,7 @@ class Radio extends Component {
             // setError(validator(e.target.value), name);
             if (onChange) onChange(e.target.value);
           }}
-          // defaultChecked={checkedValue === value}
+          defaultChecked={propsValue === value}
           {...etc}
         />
         {children || value}

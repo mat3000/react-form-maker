@@ -7,7 +7,7 @@ class Field extends Component {
 
   componentDidMount() {
     const { fields, setValue, setValidator } = this.context;
-    const { name, validator, value: defaultValue, checkedValue } = this.props;
+    const { name, validator, value: propsValue, defaultValue } = this.props;
     const { value } = fields[name] || {};
 
     if (name && validator) {
@@ -15,7 +15,7 @@ class Field extends Component {
     }
     // console.log('name ----->', name, value, defaultValue, checkedValue);
     if (name) {
-      setValue(value || defaultValue || checkedValue || '', name);
+      setValue(value || propsValue || defaultValue || '', name);
     }
   }
 
@@ -26,8 +26,8 @@ class Field extends Component {
       component,
       validator,
       disabled,
-      value: defaultValue,
-      checkedValue,
+      defaultValue,
+      value: propsValue,
       ...etc
     } = this.props;
 
@@ -42,27 +42,27 @@ class Field extends Component {
 
     const { value, error, touched } = fields[name] || {};
 
-    // console.log(defaultValue);
-
     const props = {
       api: {
         setValue: (val, n = name) => setValue(val, n),
         setDisabled: (val, n = name) => setDisabled(val, n),
         setTouched: (n = name) => setTouched(true, n),
         setError: (val, n = name) => setError(val, n),
+        // getFieldByName: (n = name) => fields[n] || {},
         validator: val => (validator ? validator(val) : ''),
         onSubmit,
       },
       state: {
         // value: value || (defaultValue && !touched ? defaultValue : ''),
-        value,
+        value: value || propsValue || defaultValue,
+        // value,
         error,
         fields,
       },
       name,
       disabled,
       // checkedValue,
-      // value: defaultValue,
+      value: propsValue || defaultValue,
       ...etc,
     };
 
@@ -85,7 +85,7 @@ Field.propTypes = {
   name: PropTypes.string,
   validator: PropTypes.func,
   value: PropTypes.string,
-  checkedValue: PropTypes.string,
+  defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   component: PropTypes.func,
   children: PropTypes.node,
@@ -94,7 +94,7 @@ Field.propTypes = {
 Field.defaultProps = {
   name: '',
   value: '',
-  checkedValue: '',
+  defaultValue: '',
   disabled: false,
   children: null,
   component: null,
