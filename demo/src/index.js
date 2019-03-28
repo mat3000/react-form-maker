@@ -1,3 +1,5 @@
+// https://blog.getshoutout.com/how-to-create-a-react-module-an-actual-example-b6e53a7ec073
+
 import React, { useState } from 'react';
 import { render } from 'react-dom';
 import Form, {
@@ -8,7 +10,7 @@ import Form, {
   Option,
   RadioGroup,
   Radio,
-  Autocomplete,
+  // Autocomplete,
   Submit,
 } from './Form/Form';
 
@@ -19,11 +21,11 @@ const Demo = () => {
       <h1>react-form-maker Demo</h1>
       <Form
         onSubmit={form => setRes(JSON.stringify(form))}
-        onChange={form => setRes(JSON.stringify(form))}
+        // onChange={form => setRes(JSON.stringify(form))}
       >
+        {/* <Input name="input_1" debug />
+        <Input name="input_2" debug /> */}
         <Input name="input_1" value="coucou" />
-        <Input name="input_1" value="coucou" disabled />
-        {/* <Input name="input_1" value="coucou" />
         <Input name="input_2" defaultValue="caca" />
         <Input name="input_3" validator={e => (!e ? 'error' : '')} />
 
@@ -31,7 +33,13 @@ const Demo = () => {
 
         <Checkbox name="checkbox" />
 
-        <Select name="select">
+        <Select name="select1">
+          <Option value="option_1">option 1</Option>
+          <Option value="option_2">option 2</Option>
+          <Option value="option_3">option 3</Option>
+        </Select>
+
+        <Select name="select2" multiple>
           <Option value="option_1">option 1</Option>
           <Option value="option_2">option 2</Option>
           <Option value="option_3">option 3</Option>
@@ -45,16 +53,16 @@ const Demo = () => {
         <RadioGroup name="radio_B" defaultValue="radio_2">
           <Radio value="radio_1">radio 1</Radio>
           <Radio value="radio_2">radio 2</Radio>
-        </RadioGroup> */}
+        </RadioGroup>
 
-        <Autocomplete
+        {/* <Autocomplete
           name="autocomplete_1"
           placeholder="Mon placeholder"
           options={['un', 'deux', 'trois']}
-          // defaultValue="un"
+          defaultValue="un"
           validator={e => (e ? '' : 'error')}
           size="10"
-        />
+        /> */}
 
         {/* <Autocomplete
           name="autocomplete_2"
@@ -73,3 +81,5 @@ const Demo = () => {
 };
 
 render(<Demo />, document.querySelector('#demo'));
+
+// 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI

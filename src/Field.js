@@ -35,8 +35,19 @@ class Field extends Component {
       disabled,
       defaultValue,
       value: initialValue,
+      // debug,
+      // style,
       ...etc
     } = this.props;
+
+    // if (debug) {
+    // let newStyle = { ...style, background: 'red' };
+
+    // setTimeout(() => {
+    //   newStyle = { ...style, background: 'none' };
+    //   this.forceUpdate();
+    // }, 1000);
+    // }
 
     const {
       setValue,
@@ -66,6 +77,7 @@ class Field extends Component {
       name,
       disabled,
       initialvalue: initialValue,
+      // style: newStyle,
       ...etc,
     };
 

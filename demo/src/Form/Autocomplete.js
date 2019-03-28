@@ -52,23 +52,6 @@ class Autocomplete extends Component {
             {...etc}
           />
         </label>
-        {status && (
-          <div>
-            <select
-              size={size}
-              onChange={e => {
-                this.setState({ status: false });
-                setValue(e.target.value);
-              }}
-            >
-              {!options.length && <option disabled>Aucun résultat...</option>}
-              {options.map((option, i) => (
-                <option key={i}>{option}</option>
-              ))}
-              <option value="" disabled selected />
-            </select>
-          </div>
-        )}
 
         {status && (
           <div>
