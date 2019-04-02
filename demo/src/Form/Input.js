@@ -11,7 +11,7 @@ const Input = ({ state, api, ...props }) => {
     <p>
       <label htmlFor={`label-${name}`}>
         <input
-          value={disabled ? '' : value}
+          value={value}
           id={`label-${name}`}
           onChange={e => {
             setValue(e.target.value);

@@ -23,37 +23,45 @@ const Demo = () => {
         onSubmit={form => setRes(JSON.stringify(form))}
         // onChange={form => setRes(JSON.stringify(form))}
       >
-        {/* <Input name="input_1" debug />
-        <Input name="input_2" debug /> */}
-        <Input name="input_1" value="coucou" />
-        <Input name="input_2" defaultValue="caca" />
-        <Input name="input_3" validator={e => (!e ? 'error' : '')} />
+        <Input name="input_1" placeholder="Text..." value="mon texte" />
+        <Input name="input_2" placeholder="disabled..." disabled />
+        <Input name="input_3" defaultValue="default value" />
+        {/* <Input name="input_5" validator={e => (!e ? 'error' : null)} /> */}
+        <Input
+          name="input_6"
+          validator={e => (!e ? 'error' : null)}
+          validator={e => console.log('validator()', e)}
+          validateOnBlur
+          validateOnChange
+          // validateOnMount
+          // validateOnSubmit
+        />
 
-        <Textarea name="textarea" />
+        {/* <Textarea name="textarea" /> */}
 
-        <Checkbox name="checkbox" />
+        {/* <Checkbox name="checkbox" /> */}
 
-        <Select name="select1">
+        {/* <Select name="select-1">
           <Option value="option_1">option 1</Option>
           <Option value="option_2">option 2</Option>
           <Option value="option_3">option 3</Option>
-        </Select>
+        </Select> */}
 
-        <Select name="select2" multiple>
+        {/* <Select name="select-2" multiple>
           <Option value="option_1">option 1</Option>
           <Option value="option_2">option 2</Option>
           <Option value="option_3">option 3</Option>
-        </Select>
+        </Select> */}
 
-        <RadioGroup name="radio_A" validator={e => (!e ? 'error' : '')}>
+        {/* <RadioGroup name="radio_A" validator={e => (!e ? 'error' : '')}>
           <Radio value="radio_1">radio 1</Radio>
           <Radio value="radio_2">radio 2</Radio>
-        </RadioGroup>
+        </RadioGroup> */}
 
-        <RadioGroup name="radio_B" defaultValue="radio_2">
+        {/* <RadioGroup name="radio_B" defaultValue="radio_2">
           <Radio value="radio_1">radio 1</Radio>
           <Radio value="radio_2">radio 2</Radio>
-        </RadioGroup>
+        </RadioGroup> */}
 
         {/* <Autocomplete
           name="autocomplete_1"
@@ -75,7 +83,7 @@ const Demo = () => {
         <Submit>Valider</Submit>
       </Form>
 
-      <pre>{res}</pre>
+      <code>{res}</code>
     </div>
   );
 };
