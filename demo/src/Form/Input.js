@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { asField } from '../../../src';
 
 const Input = ({ state, api, ...props }) => {
-  const { setValue, setTouched, setError, validator } = api;
+  const { setValue, setTouched } = api;
   const { value, error } = state;
-  const { name, disabled, onChange, ...etc } = props;
+  const { name, disabled, onChange, onBlur, ...etc } = props;
 
   return (
     <p>
@@ -16,10 +16,10 @@ const Input = ({ state, api, ...props }) => {
           onChange={e => {
             setValue(e.target.value);
             setTouched();
-            if (onChange) onChange(e.target.value);
+            if (onChange) onChange(e);
           }}
           onBlur={e => {
-            setError(e.target.value ? validator(e.target.value) : '');
+            if (onBlur) onBlur(e);
           }}
           disabled={disabled}
           {...etc}

@@ -35,6 +35,12 @@ class Field extends Component {
       disabled,
       defaultValue,
       value: initialValue,
+      onBlur,
+      onChange,
+      validateOnBlur,
+      validateOnChange,
+      // validateOnMount
+      // validateOnSubmit
       // debug,
       // style,
       ...etc
@@ -58,7 +64,9 @@ class Field extends Component {
       onSubmit,
     } = this.context;
 
-    const { value, error } = fields[name] || {};
+    // console.log(onBlur);
+
+    const { value, error, touched } = fields[name] || {};
 
     const props = {
       api: {
@@ -72,12 +80,24 @@ class Field extends Component {
       state: {
         value: value === undefined ? initialValue || defaultValue : value,
         error,
+        touched,
         fields,
       },
       name,
       disabled,
       initialvalue: initialValue,
-      // style: newStyle,
+      onBlur: e => {
+        if (validateOnBlur && touched) {
+          setError(validator(e.target.value), name);
+        }
+        if (onBlur) onBlur(e);
+      },
+      onChange: e => {
+        if (validateOnChange) {
+          setError(validator(e.target.value), name);
+        }
+        if (onChange) onChange(e);
+      },
       ...etc,
     };
 

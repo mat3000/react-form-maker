@@ -9,11 +9,18 @@ class Form extends Component {
 
     this.state = {
       fields: {
-        // name : { value: 'String', touched: false, disabled: false, error: 'String' }
+        // name: {
+        //   value: 'String',
+        //   touched: false,
+        //   disabled: false,
+        //   error: 'String',
+        //   submitValidator: false,
+        // },
       },
       setValidator: (validator, name) => {
         this.setState(state => {
           const { fields } = state;
+          console.log(state);
           fields[name] = fields[name] || {};
           fields[name].validator = validator;
           return { fields, ...state };
@@ -58,6 +65,8 @@ class Form extends Component {
 
     Object.keys(fields).forEach(key => {
       const field = fields[key];
+
+      // console.log(field);
 
       /* test all inputs */
       if (field.validator) {
