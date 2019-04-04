@@ -23,17 +23,15 @@ const Demo = () => {
         onSubmit={form => setRes(JSON.stringify(form))}
         // onChange={form => setRes(JSON.stringify(form))}
       >
-        {/* <Input name="input_1" placeholder="Text..." value="mon texte" />
+        <Input name="input_1" placeholder="Text..." value="mon texte" />
         <Input name="input_2" placeholder="disabled..." disabled />
-        <Input name="input_3" defaultValue="default value" /> */}
-        {/* <Input name="input_5" validator={e => (!e ? 'error' : null)} /> */}
+        <Input name="input_3" defaultValue="default value" />
+        <Input name="input_5" validator={e => (!e ? 'error' : null)} />
         <Input
           name="input_6"
           validator={e => `validator('${e}')`}
-          // validator={e => console.log('validator(', e, ')')}
           validateOnBlur
           // validateOnChange
-          // validateOnSubmit
         />
 
         {/* <Textarea name="textarea" /> */}

@@ -28,6 +28,7 @@ const Input = ({ state, api, ...props }) => {
       {!disabled && error ? (
         <span style={{ display: 'block', color: 'red' }}>{error}</span>
       ) : null}
+      {Math.random()}
     </p>
   );
 };

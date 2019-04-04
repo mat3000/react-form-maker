@@ -14,7 +14,6 @@ class Form extends Component {
         //   touched: false,
         //   disabled: false,
         //   error: 'String',
-        //   submitValidator: false,
         // },
       },
       setValidator: (validator, name) => {
@@ -23,7 +22,7 @@ class Form extends Component {
           console.log(state);
           fields[name] = fields[name] || {};
           fields[name].validator = validator;
-          return { fields, ...state };
+          return { ...state, fields };
         });
       },
       setValue: (value, name) => {
@@ -65,8 +64,6 @@ class Form extends Component {
 
     Object.keys(fields).forEach(key => {
       const field = fields[key];
-
-      // console.log(field);
 
       /* test all inputs */
       if (field.validator) {
