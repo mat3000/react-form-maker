@@ -3,9 +3,10 @@ import React from 'react';
 import { asField } from '../../../src';
 
 const Input = ({ api, state, ...props }) => {
-  console.log('api', api);
-  console.log('state', state);
-  console.log('props', props);
+  // console.log('api', api);
+  // console.log('state', state);
+  // console.log('props', props);
+  console.log('Input');
 
   return (
     <p>

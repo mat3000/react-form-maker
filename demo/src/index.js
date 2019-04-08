@@ -20,7 +20,7 @@ const Demo = () => {
     <div>
       <h1>react-form-maker Demo</h1>
       <Form
-        onSubmit={form => setRes(JSON.stringify(form))}
+        onSubmit={e => setRes(JSON.stringify(e))}
         // onChange={form => setRes(JSON.stringify(form))}
       >
         <Input name="input_1" value="mon texte" placeholder="Text..." />

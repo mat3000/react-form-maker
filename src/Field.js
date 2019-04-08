@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import FormContext from './Context';
 
-const asField = Component => ({ value, name, ...etc }) => {
+const asField = Component => ({ name, value, ...etc }) => {
   const formContext = useContext(FormContext);
   const [val, setVal] = useState('');
 
@@ -12,6 +12,7 @@ const asField = Component => ({ value, name, ...etc }) => {
   };
 
   useEffect(() => {
+    console.log('ooooook');
     setValue(value);
   }, []);
 
