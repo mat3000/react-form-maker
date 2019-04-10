@@ -1,18 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import FormContext from './Context';
 import asField from './Field';
 
 const Form = ({ children, onSubmit }) => {
+  console.log('Form()');
+
   const form = {};
 
   const setValue = (value, name) => {
+    console.log('Form() setValue()', value, name);
     form[name] = value;
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(form);
+    console.log('Form() handleSubmit()', form);
     if (onSubmit) onSubmit(form);
   }
 
@@ -22,5 +24,6 @@ const Form = ({ children, onSubmit }) => {
     </FormContext.Provider>
   );
 };
+
 export default Form;
 export { asField };

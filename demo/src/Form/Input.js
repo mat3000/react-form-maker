@@ -1,12 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { asField } from '../../../src';
 
-const Input = ({ api, state, ...props }) => {
-  // console.log('api', api);
-  // console.log('state', state);
-  // console.log('props', props);
-  console.log('Input');
+const Input = ({ api, state }) => {
+  console.log('Input() render');
 
   return (
     <p>
