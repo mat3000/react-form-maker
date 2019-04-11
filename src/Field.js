@@ -6,25 +6,14 @@ const asField = Component => ({ name, value, ...etc }) => {
   const formContext = useContext(FormContext);
   const [val, setVal] = useState('');
 
-  console.log('asField()', name, value);
-
   const setValue = e => {
     setVal(e || '');
     formContext.setValue(e, name);
   };
 
   useEffect(() => {
-    console.log('--> ooooook');
     setValue(value);
   }, []);
-
-  useEffect(() => {
-    console.log('--> useEffect');
-  });
-
-  useLayoutEffect(() => {
-    console.log('--> useLayoutEffect');
-  });
 
   const props = {
     ...etc,

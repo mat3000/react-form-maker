@@ -11,11 +11,18 @@ const Demo = () => {
     <div>
       <h1>react-form-maker Demo</h1>
 
-      <Form onSubmit={e => setRes1(e)}>
+      <Form
+        onSubmit={e => {
+          console.log('-----', e);
+          setRes1(e);
+          // setRes1(Math.random());
+        }}
+      >
         <Input name="input_1" value="mon texte" />
         <p>{Math.random()}</p>
         <button type="submit">Valider</button>
       </Form>
+      {console.log(res1)}
       <code>{JSON.stringify(res1)}</code>
 
       <hr />
