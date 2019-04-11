@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import FormContext from './Context';
 import asField from './Field';
 
@@ -67,7 +67,6 @@ const Form = ({ children, onSubmit }) => {
     // setState(form);
     // if (onSubmit) onSubmit(state);
   }
-
   return (
     <FormContext.Provider value={{ form, setValue }}>
       <form onSubmit={handleSubmit}>{children}</form>
