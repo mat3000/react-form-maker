@@ -1,5 +1,7 @@
 // https://blog.getshoutout.com/how-to-create-a-react-module-an-actual-example-b6e53a7ec073
 
+// https://medium.freecodecamp.org/how-to-detect-an-outside-click-with-react-and-hooks-25dbaa30abcd
+
 import React, { useState } from 'react';
 import { render } from 'react-dom';
 import Form, { Input } from './Form/Form';
