@@ -5,34 +5,38 @@ import { render } from 'react-dom';
 import Form, { Input } from './Form/Form';
 
 const Demo = () => {
-  const [res1, setRes1] = useState();
-  const [res2, setRes2] = useState();
+  const [res1, setRes1] = useState({});
+  // const [res2, setRes2] = useState({});
+  const [val, setVal] = useState('coucou');
+
   return (
     <div>
       <h1>react-form-maker Demo</h1>
 
+      <button onClick={() => setVal('ca va ?')}>Update value</button>
+
       <Form
         onSubmit={e => {
-          console.log('-----', e);
+          // console.log(e);
           setRes1(e);
-          // setRes1(Math.random());
         }}
       >
-        <Input name="input_1" value="mon texte" />
+        <Input name="input_1" value={val} />
+        <Input name="input_2" />
         <p>{Math.random()}</p>
         <button type="submit">Valider</button>
       </Form>
-      {console.log(res1)}
       <code>{JSON.stringify(res1)}</code>
 
       <hr />
 
-      <Form onSubmit={e => setRes2(e)}>
+      {/* <Form onSubmit={e => setRes2(e)}>
         <Input name="input_1" value="zzzzzzz" />
         <p>{Math.random()}</p>
         <button type="submit">Valider</button>
-      </Form>
-      <code>{JSON.stringify(res2)}</code>
+      </Form> */}
+      {/* <code>{JSON.stringify(res2)}</code> */}
+      {/* {resTest} */}
     </div>
   );
 };
