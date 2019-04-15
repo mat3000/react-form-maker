@@ -1,19 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
+import React from 'react';
 import FormContext from './Context';
 import { useForm } from './Hooks';
 import asField from './Field';
-
-/* function useForm() {
-  const [state, setState] = useState({});
-
-  function setForm(key, value) {
-    const newState = state;
-    newState[key] = value;
-    setState(newState);
-  }
-
-  return [state, setForm];
-} */
 
 const Form = ({ children, onSubmit, onChange }) => {
   const [form, setForm] = useForm();

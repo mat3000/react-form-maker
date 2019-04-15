@@ -5,25 +5,22 @@ import FormContext from './Context';
 
 const asField = Component => ({ name, value: propsValue, ...etc }) => {
   const formContext = useContext(FormContext);
-  const [val, setVal] = useState('');
+  const [val, setVal] = useState(propsValue || '');
   const [refValue, setRefValue] = useRefValue();
 
-  const setValue = e => {
-    setVal(e || '');
-    formContext.setValue(e, name);
+  console.log('asField()');
+
+  const setValue = value => {
+    setVal(value || '');
+    formContext.setValue(value, name);
   };
 
   useEffect(() => {
-    if (refValue !== propsValue) {
-      setRefValue(propsValue);
+    if (propsValue && refValue(name) !== propsValue) {
+      setRefValue(name, propsValue);
       setValue(propsValue);
     }
   });
-
-  useEffect(() => {
-    setRefValue(propsValue);
-    setValue(propsValue);
-  }, []);
 
   const props = {
     ...etc,

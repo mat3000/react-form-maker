@@ -19,8 +19,8 @@ const Demo = () => {
 
       <Form
         onSubmit={e => {
-          // console.log(e);
-          setRes1(e);
+          console.log(e);
+          // setRes1(e);
         }}
       >
         <Input name="input_1" value={val} />

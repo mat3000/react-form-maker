@@ -2,7 +2,7 @@ import React from 'react';
 import { asField } from '../../../src';
 
 const Input = ({ api, state }) => {
-  console.log('Input() render');
+  console.log('Input()');
 
   return (
     <p>
