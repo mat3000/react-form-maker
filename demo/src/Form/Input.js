@@ -1,19 +1,16 @@
 import React from 'react';
 import { asField } from '../../../src';
 
-const Input = ({ api, state }) => {
-  console.log('Input()');
+const Input = ({ api, state }) => (
+  // console.log('Input()');
 
-  return (
-    <p>
-      <input
-        type="text"
-        value={state.value}
-        onChange={e => api.setValue(e.target.value)}
-      />
-      {Math.random()}
-    </p>
-  );
-};
-
+  <p>
+    <input
+      type="text"
+      value={state.value}
+      onChange={e => api.setValue(e.target.value)}
+    />
+    {Math.random()}
+  </p>
+);
 export default asField(Input);

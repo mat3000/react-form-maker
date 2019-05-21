@@ -3,7 +3,7 @@ import FormContext from './Context';
 import { useForm } from './Hooks';
 import asField from './Field';
 
-const Form = ({ children, onSubmit, onChange }) => {
+const Form = ({ children, onSubmit, onChange, getApi }) => {
   const [form, setForm] = useForm();
 
   const setValue = (value, name) => {
@@ -19,6 +19,8 @@ const Form = ({ children, onSubmit, onChange }) => {
     e.preventDefault();
     if (onChange) onChange({ ...form });
   }
+
+  getApi('coucou');
 
   return (
     <FormContext.Provider value={{ form, setValue }}>

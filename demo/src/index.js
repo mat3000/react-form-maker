@@ -22,6 +22,7 @@ const Demo = () => {
           console.log(e);
           // setRes1(e);
         }}
+        getApi={api => console.log('getApi', api)}
       >
         <Input name="input_1" value={val} />
         <Input name="input_2" />

@@ -8,7 +8,7 @@ const asField = Component => ({ name, value: propsValue, ...etc }) => {
   const [val, setVal] = useState(propsValue || '');
   const [refValue, setRefValue] = useRefValue();
 
-  console.log('asField()');
+  // console.log('asField()');
 
   const setValue = value => {
     setVal(value || '');
