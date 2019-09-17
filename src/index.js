@@ -15,8 +15,8 @@ import asField from './Field';
   return [state, setForm];
 } */
 
-const Form = ({ children, onSubmit, onChange }) => {
-  const [form, setForm] = useForm();
+const Form = ({ children, onSubmit, onChange, form, setForm }) => {
+  // const [form, setForm] = useForm();
 
   const setValue = (value, name) => {
     setForm(name, value);
@@ -42,4 +42,4 @@ const Form = ({ children, onSubmit, onChange }) => {
 };
 
 export default Form;
-export { asField };
+export { asField, useForm };
